@@ -1,0 +1,44 @@
+.first-one Button {
+  margin-top: 170px;
+}
+.second-one Button {
+  margin-top: 125px;
+}
+
+.third-one Button {
+  margin-top: 125px;
+}
+.imgs {
+  position: relative;
+  top: 20px;
+
+  right: 5px;
+}
+.header-txt {
+  position: relative;
+  top: 20px;
+  margin-left: 50px;
+}
+.box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 500px;
+  height: 500px;
+}
+.btn {
+  position: relative;
+  right: 700px;
+  bottom: 50px;
+}
+
+.side-img {
+  display: flex;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.colors {
+  margin-left: 50px;
+}
