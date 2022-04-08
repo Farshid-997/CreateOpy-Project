@@ -15,9 +15,10 @@
   right: 5px;
 }
 .header-txt {
-  position: relative;
-  top: 20px;
-  margin-left: 50px;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  z-index: 1;
 }
 .box {
   display: flex;
@@ -41,4 +42,42 @@
 }
 .colors {
   margin-left: 50px;
+}
+
+.head {
+  margin-top: -400px;
+  margin-left: 10px;
+}
+.img-div {
+  position: relative;
+}
+
+.inner-image {
+  position: absolute;
+  top: 40px;
+}
+.img {
+  position: relative;
+  top: 10px;
+  margin-left: 120px;
+}
+.imgs {
+  position: relative;
+  left: 210px;
+  top: 270px;
+  z-index: 0;
+}
+
+.para-text{
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  z-index: 1;
+}
+
+.below-para-text{
+  position: absolute;
+  top: 200%;
+  left: 50%;
+  z-index: 1;
 }

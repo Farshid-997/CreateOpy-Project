@@ -11,7 +11,7 @@ const Image = () => {
      
         formData.append('image', image);
     
-    fetch('http://localhost:5000/images', {
+    fetch('https://intense-badlands-37074.herokuapp.com/images', {
       method: 'POST',
       body: formData
     })

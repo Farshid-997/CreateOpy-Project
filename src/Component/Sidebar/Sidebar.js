@@ -14,8 +14,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
-import { Button} from '@mui/material';
+import { Alert, Button} from '@mui/material';
 import './Sidebar.css'
+
+import template from './template.png'
 
 
 const drawerWidth = 350;
@@ -39,7 +41,7 @@ function Sidebar(props) {
 
   // fetch images from the Server
  useEffect(()=>{
-  fetch('http://localhost:5000/images')
+  fetch('https://intense-badlands-37074.herokuapp.com/images')
   .then(res => res.json())
   .then(data => setImages(data));
   },[])
@@ -50,7 +52,9 @@ function Sidebar(props) {
   const [color,setSelectedColor]=React.useState('#ccc')
   const[text,setText]=React.useState('')
 
+  const [para,setPara]=useState('')
 
+  const [belowpara,setBelowPara]=useState('')
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -61,6 +65,15 @@ function Sidebar(props) {
 const handleChange=(e)=>{
 setText(e.target.value)
 }
+
+const handlePara=(e)=>{
+setPara(e.target.value)
+}
+
+const handleBelowPara=(e)=>{
+  setBelowPara(e.target.value)
+  }
+
 
 //show images
 const handleImage=(image)=>{
@@ -80,6 +93,9 @@ const showColors=()=>{
 const showText=()=>{
   setTextActive(true)
 }
+
+
+
 const drawer = (
     <div>
       <Toolbar />
@@ -102,6 +118,51 @@ textactive&&
 
 }
       </div>
+
+      {/* Midlle paragrah */}
+
+      <div>
+     
+     {/* For showing The paragraphs*/}
+     
+     <Button variant="text" onClick={showText}>Middle Paragraph</Button> <br />
+     {
+     textactive&&
+     
+      <textarea
+       aria-label="empty textarea"
+       placeholder="Empty"
+       style={{ width: '50',height:'50',padding:'15px' }}
+       onChange={ handlePara}
+     />
+     
+     
+     }
+           </div>
+
+
+{/* below Paragraph */}
+
+
+<div>
+     
+     {/* For showing The paragraphs*/}
+     
+     <Button variant="text" onClick={showText}>Below Paragraph</Button> <br />
+     {
+     textactive&&
+     
+      <textarea
+       aria-label="empty textarea"
+       placeholder="Empty"
+       style={{ width: '50',height:'50',padding:'15px' }}
+       onChange={handleBelowPara}
+     />
+     
+     
+     }
+           </div>
+
 
 <br />
    
@@ -137,6 +198,7 @@ textactive&&
   imageactive &&
   images.map(images=>
      <div className="img" key={images._id}><img src={`data:image/png;base64,${images.image}`} onClick={()=>handleImage(images.image)} alt="" style={{width:'100px' ,height:'100px'}}  /></div>
+  
     )
 }
 </div>
@@ -210,32 +272,18 @@ textactive&&
         </Drawer>
       </Box>
 
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
-      >
-        <Toolbar />
-     
-     
     
-      <Box  className="box" sx={{  backgroundColor:color }}>
-      
-
-<div className='header-txt'>
-
-  {text}
+  
+<div className="img-div" sx={{  backgroundColor:color }}>
+<div className='header-txt' style={{color:'blue'}}> <h1>{text}</h1> </div>
+<div className='para-text' style={{color:'blue',fontSize:'15px'}}> {para.length<=30 && <h3 style={{wordBreak:'break-word', whiteSpace:'pre-wrap'}}>{para} </h3>}</div>
+<div className='below-para-text' style={{color:'blue',fontSize:'12px'}}> {belowpara.length<=25 ? <h3 style={{wordBreak:'break-word', whiteSpace:'pre-wrap'}}>{belowpara} <br /> </h3>: <Alert style={{position:'relative',top:'-550px'}}>Words need to less than 15</Alert>}</div>
+<img className="inner-image" src={template} alt="" style={{width:'500px',height:'500px',marginTop:'150px',marginLeft:'150px'}} />
+<img src={`data:image/png;base64,${img}`}   alt="" style={{width:'280px' ,height:'310px',marginLeft:'150px',borderRadius:'50%'}} className='imgs' />
 </div>
-
-
-<div className='imgs'>
-{<img src={`data:image/png;base64,${img}`}  alt="" style={{width:'200px' ,height:'300px',marginLeft:'150px'}}  />}
-</div>
-
-
      
-    </Box>
-    <Button className='btn'>Explore</Button>
-      </Box>
+
+      
     </Box>
 
 
