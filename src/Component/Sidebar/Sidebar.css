@@ -8,12 +8,12 @@
 .third-one Button {
   margin-top: 125px;
 }
-.imgs {
+/* .imgs {
   position: relative;
   top: 20px;
 
   right: 5px;
-}
+} */
 .header-txt {
   position: absolute;
   top: 110%;
@@ -25,7 +25,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  width: 500px;
+  width: 700px;
   height: 500px;
 }
 .btn {
@@ -61,12 +61,12 @@
   top: 10px;
   margin-left: 120px;
 }
-.imgs {
+/* .imgs {
   position: relative;
   left: 210px;
   top: 270px;
   z-index: 0;
-}
+} */
 
 .para-text{
   position: absolute;
