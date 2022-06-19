@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -16,6 +16,7 @@ import { Button } from "@mui/material";
 import "./Sidebar.css";
 
 import template from "./template.png";
+import html2canvas from "html2canvas";
 
 const drawerWidth = 350;
 
@@ -31,6 +32,27 @@ function Sidebar(props) {
   const [coloractive, setColorActive] = useState(false);
 
   const [textactive, setTextActive] = useState(false);
+
+  const printRef = useRef();
+
+  const handleDownloadImage = async () => {
+    const element = printRef.current;
+    const canvas = await html2canvas(element);
+
+    const data = canvas.toDataURL("image/jpg");
+    const link = document.createElement("a");
+
+    if (typeof link.download === "string") {
+      link.href = data;
+      link.download = "image.jpg";
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      window.open(data);
+    }
+  };
 
   // fetch images from the Server
   // useEffect(() => {
@@ -160,6 +182,14 @@ function Sidebar(props) {
 
       <br />
 
+      <Button
+        variant="outlined"
+        color="success"
+        size="large"
+        onClick={handleDownloadImage}
+      >
+        Download As A Image
+      </Button>
       <div>
         {/* <Button variant="text" onClick={showImages}>
           Images
@@ -251,6 +281,7 @@ function Sidebar(props) {
       </Box>
       <br />
       <div
+        ref={printRef}
         className="img-div"
         style={{ backgroundColor: color, marginTop: "10%" }}
       >
