@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -21,31 +21,31 @@ const drawerWidth = 350;
 
 function Sidebar(props) {
   // state for the images to show in sidebar
-  const [images, setImages] = useState([]);
+  //const [images, setImages] = useState([]);
 
   //  state for the images to show in MainComponent
-  const [img, setImg] = useState([]);
+  //const [img, setImg] = useState([]);
 
-  const [imageactive, setImageActive] = useState(false);
+  //const [imageactive, setImageActive] = useState(false);
 
   const [coloractive, setColorActive] = useState(false);
 
   const [textactive, setTextActive] = useState(false);
 
   // fetch images from the Server
-  useEffect(() => {
-    fetch("https://intense-badlands-37074.herokuapp.com/images")
-      .then((res) => res.json())
-      .then((data) => setImages(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://intense-badlands-37074.herokuapp.com/images")
+  //     .then((res) => res.json())
+  //     .then((data) => setImages(data));
+  // }, []);
 
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  const [color, setSelectedColor] = React.useState("#ccc");
+  const [color, setSelectedColor] = useState("#ccc");
   const [text, setText] = React.useState("");
 
-  const [para, setPara] = useState("");
+  // const [para, setPara] = useState("");
 
   const [belowpara, setBelowPara] = useState("");
   const handleDrawerToggle = () => {
@@ -57,24 +57,24 @@ function Sidebar(props) {
     setText(e.target.value);
   };
 
-  const handlePara = (e) => {
-    setPara(e.target.value);
-  };
+  // const handlePara = (e) => {
+  //   setPara(e.target.value);
+  // };
 
   const handleBelowPara = (e) => {
     setBelowPara(e.target.value);
   };
 
   //show images
-  const handleImage = (image) => {
-    const img = image;
-    setImg(img);
-  };
+  // const handleImage = (image) => {
+  //   const img = image;
+  //   setImg(img);
+  // };
 
   // conditionaly shown the items
-  const showImages = () => {
-    setImageActive(true);
-  };
+  // const showImages = () => {
+  //   setImageActive(true);
+  // };
 
   const showColors = () => {
     setColorActive(true);
@@ -161,11 +161,11 @@ function Sidebar(props) {
       <br />
 
       <div>
-        <Button variant="text" onClick={showImages}>
+        {/* <Button variant="text" onClick={showImages}>
           Images
-        </Button>
+        </Button> */}
 
-        <div className="side-img">
+        {/* <div className="side-img">
           {imageactive &&
             images.map((images) => (
               <div className="img" key={images._id}>
@@ -177,7 +177,7 @@ function Sidebar(props) {
                 />
               </div>
             ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -249,8 +249,11 @@ function Sidebar(props) {
           {drawer}
         </Drawer>
       </Box>
-
-      <div className="img-div" sx={{ backgroundColor: color }}>
+      <br />
+      <div
+        className="img-div"
+        style={{ backgroundColor: color, marginTop: "10%" }}
+      >
         <div className="header-txt" style={{ color: "blue" }}>
           <h2 style={{ wordBreak: "break-word" }}>{text}</h2>
         </div>
@@ -272,6 +275,7 @@ function Sidebar(props) {
             {belowpara} <br />
           </h3>
         </div>
+
         <img
           className="inner-image"
           src={template}
@@ -283,7 +287,8 @@ function Sidebar(props) {
             marginLeft: "150px",
           }}
         />
-        <img
+
+        {/* <img
           src={`data:image/png;base64,${img}`}
           alt=""
           style={{
@@ -293,7 +298,7 @@ function Sidebar(props) {
             borderRadius: "50%",
           }}
           className="imgs"
-        />
+        /> */}
       </div>
     </Box>
   );
