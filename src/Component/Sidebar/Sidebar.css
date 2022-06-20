@@ -16,8 +16,8 @@
 } */
 .header-txt {
   position: fixed;
-  top: 48%;
-  left: 33%;
+  margin-top: -7.5%;
+ margin-left: -2%;
   z-index: 2;
 }
 /* .box {
@@ -50,9 +50,9 @@
   margin-left: 10px;
 }
 .img-div {
-  position: relative;
+  position: fixed;
  
-  left:10%;
+  left:30%;
   
 }
 
@@ -85,4 +85,13 @@
   top: 75%;
   left: 20%;
   z-index: 2;
+}
+
+@media only screen and (min-width: 768px) {
+  .header-txt {
+    position: fixed;
+    top: 64%;
+    left: 38%;
+    z-index: 2;
+  }
 }
